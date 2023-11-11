@@ -2,6 +2,8 @@
 
 return [
 
+
+
     /*
     |--------------------------------------------------------------------------
     | Third Party Services
@@ -30,5 +32,13 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+
+    'google' => [
+        'client_id' => env('516286642003-0m253vgprv8574lss58teft4rkpku6am.apps.googleusercontent.com'),
+        'client_secret' => env('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'),
+        'redirect' => 'http://127.0.0.1:8000/callback/google',
+    ],
+
+
 
 ];
