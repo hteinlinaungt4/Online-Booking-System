@@ -19,14 +19,12 @@ class GoogleController extends Controller
 
     public function callbackToGoogle(Request $request)
     {
-
-
         try {
             $user = Socialite::driver('google')->user();
             $finduser = User::where('gauth_id', $user->id)->first();
             if ($finduser) {
                 Auth::login($finduser);
-                return redirect('/admin/admin');
+                return redirect()->route('/admin/admin');
             } else {
                 $newUser = User::create([
                     'name' => $user->name,
@@ -36,10 +34,10 @@ class GoogleController extends Controller
                     'password' => encrypt('admin@123')
                 ]);
                 Auth::login($newUser);
-                return redirect('admin/admin');
+                return redirect()->route('admin/admin');
             }
         } catch (Exception $e) {
-            dd($e->getCode());
+            dd($e->getFile());
         }
     }
 }

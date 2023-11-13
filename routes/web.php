@@ -15,6 +15,11 @@ Route::get('registerPage', [AuthController::class, 'registerPage'])->name('auth#
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
 
+    //google login
+    Route::get('auth/google', [GoogleController::class, 'signInwithGoogle'])->name('google#auth');
+
+    Route::get('callback/google', [GoogleController::class, 'callbackToGoogle']);
+
     // check user or admin
     Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
@@ -29,8 +34,3 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         Route::get('home', [UserController::class, 'userHomePage'])->name('user#home');
     });
 });
-
-//google login
-Route::get('auth/google', [GoogleController::class, 'signInwithGoogle'])->name('google#auth');
-
-Route::get('callback/google', [GoogleController::class, 'callbackToGoogle']);
