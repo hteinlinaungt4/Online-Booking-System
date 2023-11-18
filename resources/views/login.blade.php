@@ -53,6 +53,7 @@
                         Don’t have an account yet? <a href="{{ route('auth#registerPage') }}"
                             class="font-medium text-primary-600 hover:underline dark:text-primary-500">Register</a>
                     </p>
+                    
 
 
                 </div>
