@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('admin.layout.master')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>online-booking-system</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body>
-    <h1>Hello welcome from admin home page</h1>
-    {{-- <h5>Role - {{ Auth::user()->role }}</h5> --}}
-    <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button type="submit" class="bg-teal-600 rounded-md">Logout</button>
-    </form>
-
-</body>
-
-</html>
+@section('content')
+    <h1>This is admin home page.</h1>
+@endsection

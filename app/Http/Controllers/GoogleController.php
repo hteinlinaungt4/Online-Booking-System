@@ -12,19 +12,19 @@ use Laravel\Socialite\Facades\Socialite;
 
 class GoogleController extends Controller
 {
-    public function signInwithGoogle(Request $request)
+    public function signInwithGoogle()
     {
         return Socialite::driver('google')->redirect();
     }
 
-    public function callbackToGoogle(Request $request)
+    public function callbackToGoogle()
     {
         try {
             $user = Socialite::driver('google')->user();
             $finduser = User::where('gauth_id', $user->id)->first();
             if ($finduser) {
                 Auth::login($finduser);
-                return redirect()->route('/admin/admin');
+                return redirect('/dashboard');
             } else {
                 $newUser = User::create([
                     'name' => $user->name,
@@ -34,10 +34,10 @@ class GoogleController extends Controller
                     'password' => encrypt('admin@123')
                 ]);
                 Auth::login($newUser);
-                return redirect()->route('admin/admin');
+                return redirect('/dashboard');
             }
         } catch (Exception $e) {
-            dd($e->getFile());
+            dd($e->getMessage());
         }
     }
 }

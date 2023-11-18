@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    // welcome Page
+    public function welcomePage()
+    {
+        return view('layouts.master');
+    }
     //login page
 
     public function loginPage()
